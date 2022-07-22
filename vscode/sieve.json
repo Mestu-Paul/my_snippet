@@ -1,9 +1,21 @@
-"my snippet":{
+{
+	"prime generate":{
 		"prefix": "sieve",
 		"body": [
-			"ll prime_size=1e6+5;\nvi primes;\nvb mark(prime_size);\nvoid sieve(){\n\tll i,j;",
-			"\tfor(i=3; i*i<=prime_size; i+=2){\n\t\tif(!mark[i]){\n\t\t\tfor(j=i*i; j<=prime_size; j+=i*2)mark[j]=1;",
-			"\t\t}\n\t}\n\tprimes.pb(2);\n\tfor(i=3; i<=N; i+=2)if(!mark[i])primes.pb(i);\n}",
+			"ll prime_size=1e6+5;",
+			"vi primes;",
+			"vb mark(prime_size);",
+			"void sieve(){",
+			"    ll i,j;",
+			"    for(i=3; i*i<=prime_size; i+=2){",
+			"        if(!mark[i]){",
+			"            for(j=i*i; j<=prime_size; j+=i*2)mark[j]=1;",
+			"        }",
+			"    }",
+			"    primes.pb(2);",
+			"    for(i=3; i<=N; i+=2)if(!mark[i])primes.pb(i);",
+			"}",
 		],
 		"description": "it is for find out prime",
 	}
+}

@@ -1,0 +1,15 @@
+{
+	"decimal to binary":{
+		"prefix": "decimalToBinary",
+		"body": [
+			"void DecToBin(ll a, vb& bit){",
+			"\tbit.clear();",
+			"\twhile(a){",
+			"\t\tbit.pb(a&1);",
+			"\t\ta = a>>1;",
+			"\t}",
+			"\treverse(all(bit));",
+			"}"
+		],
+	}
+}
