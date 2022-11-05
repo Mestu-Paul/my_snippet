@@ -264,19 +264,79 @@
 }
   ```
 </details>
-  
+	
 <details>
-  <summary>Next one</summary>
+  <summary>binary indexed tree</summary>
   <b>Code</b>
   
   ```c++
-  
+  template<class T>
+class BIT{
+    public:
+    int n;
+    vector<T> tree;
+    BIT(int _n){
+        n=_n;
+        tree.assign(n+1,0);
+    }
+    void update(int x, int v){
+        while(x<=n){
+            tree[x]+=v;
+            x += x&(-x);
+        }
+    }
+    T query(int x){
+        T sum=0;
+        while(x>0){
+            sum += tree[x];
+            x -= x&(-x);
+        }
+        return sum;
+    }
+    T query(int l, int r){
+        return query(r)-query(l-1);
+    }
+};
   ```
 
   <b> VS code </b>
 
   ```
-  
+  {
+	"Binary index tree":{
+		"prefix": "BIT",
+		"body": [
+			"template<class T>",
+			"class BIT{",
+			"    public:",
+			"    int n;",
+			"    vector<T> tree;",
+			"    BIT(int _n){",
+			"        n=_n;",
+			"        tree.assign(n+1,0);",
+			"    }",
+			"    void update(int x, int v){",
+			"        while(x<=n){",
+			"            tree[x]+=v;",
+			"            x += x&(-x);",
+			"        }",
+			"    }",
+			"    T query(int x){",
+			"        T sum=0;",
+			"        while(x>0){",
+			"            sum += tree[x];",
+			"            x -= x&(-x);",
+			"        }",
+			"        return sum;",
+			"    }",
+			"    T query(int l, int r){",
+			"        return query(r)-query(l-1);",
+			"    }",
+			"};",
+		],
+		"description": "binary index tree",
+	}
+}
   ```
 </details>
 
