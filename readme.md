@@ -1,8 +1,1 @@
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/ArticulationBridge.md">Articulation Bridge</a>
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/ArticulationPoint.md">Articulation Point</a>
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/DSU.md">DSU</a>
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/LCA.md">Lowest Common Ancestor</a>
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/MergeSortTree.md">Merge Sort Tree</a>
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/TreeDiameter.md">Tree Diameter</a>
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/DoubleHashing.md">Double hashing</a>
-- <a href="https://github.com/Mestu-Paul/my_snippet/blob/main/algorithm/DecimalToBinary.md">Decimal To Binary</a>
+## visit snippet.md file 
