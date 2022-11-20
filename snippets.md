@@ -1,3 +1,110 @@
+
+<details>
+	<summary>Main</summary>
+	<b>Code</b>
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+//#include<ext/pb_ds/assoc_container.hpp>
+//#include<ext/pb_ds/tree_policy.hpp>
+//using namespace __gnu_pbds;
+//typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds; // find_by_order, order_of_key
+#define ll long long
+#define vi vector<int>
+#define pii pair<int, int>
+#define pll pair<ll, ll>
+#define vvi vector<vi>
+#define vll vector<ll>
+#define vvll vector<vector<ll>>
+#define vpii vector<pair<int,int>>
+#define vpll vector<pair<ll,ll>>
+int Set(int N, int pos) {return  N = N | (1<<pos);}
+int Reset(int N, int pos) {return  N = N & ~(1<<pos);}
+bool Cheek(int N, int pos) {return  (bool)(N & (1<<pos));}
+///............x...........///
+#define all(a) a.begin(), a.end()
+#define allr(a) a.rbegin(), a.rend()
+#define mp(a, b) make_pair(a, b)
+#define pb push_back
+#define UNIQUE(X) (X).erase(unique(all(X)), (X).end())
+#define ft cout << "for test"<<endl;
+#define print(v) for (auto it : v)cout << it<<" ";cout << endl;
+#define PI acos(-1.0)
+#define FIO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define t_c int test, cs = 1;cin>>test;while (test--)
+///................function.....................///
+
+//#define mod 1000000007
+//........constant........///
+const ll N = 1e6+5;
+void file(){
+   freopen("input.txt","r",stdin);
+   freopen("output.txt","w",stdout);
+}
+int main(){
+    FIO;
+    file();
+
+}
+```
+	
+<b>vs code</b>
+	
+```
+{
+	"For basic template":{
+		"prefix": "basic",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			
+			"//#include<ext/pb_ds/assoc_container.hpp>",
+			"//#include<ext/pb_ds/tree_policy.hpp>",
+			"//using namespace __gnu_pbds;",
+			"//typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds; // find_by_order, order_of_key",
+			"#define ll long long",
+			"#define vi vector<int>",
+			"#define pii pair<int, int>",
+			"#define pll pair<ll, ll>",
+			"#define vvi vector<vi>",
+			"#define vll vector<ll>",
+			"#define vvll vector<vector<ll>>",
+			"#define vpii vector<pair<int,int>>",
+			"#define vpll vector<pair<ll,ll>>",
+			"int Set(int N, int pos) {return  N = N | (1<<pos);}",
+			"int Reset(int N, int pos) {return  N = N & ~(1<<pos);}",
+			"bool Cheek(int N, int pos) {return  (bool)(N & (1<<pos));}",
+			"///............x...........///",
+			"#define all(a) a.begin(), a.end()",
+			"#define allr(a) a.rbegin(), a.rend()",
+			"#define mp(a, b) make_pair(a, b)",
+			"#define pb push_back",
+			"#define UNIQUE(X) (X).erase(unique(all(X)), (X).end())",
+			"#define ft cout << \"for test\"<<endl;",
+			"#define print(v) for (auto it : v)cout << it<<\" \";cout << endl;",
+			"#define PI acos(-1.0)",
+			"#define FIO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);",
+			"#define t_c int test, cs = 1;cin>>test;while (test--)",
+			"///................function.....................///\n",
+			"//#define mod 1000000007",
+			"//........constant........///",
+			"const ll N = 1e6+5;",
+			"void file(){",
+			"   freopen(\"input.txt\",\"r\",stdin);",
+			"   freopen(\"output.txt\",\"w\",stdout);",
+			"}",
+			"int main(){",
+			"\tFIO;",
+			"\tfile();\n$0",
+			"}",
+		],
+		"description": "nothing",
+	}
+}
+```
+</details>
+
 <details>
   <summary>Trie</summary>
   <b>Code</b>
@@ -1535,6 +1642,7 @@ void sieve(){
 </details>
 
 
+
 <details>
 	<summary>Next one</summary>
 	<b>Code</b>
@@ -1546,7 +1654,7 @@ void sieve(){
 <b>vs code</b>
 	
 ```
-	
+
 ```
 	
 </details>
