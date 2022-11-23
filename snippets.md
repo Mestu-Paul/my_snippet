@@ -22,6 +22,10 @@ using namespace std;
 int Set(int N, int pos) {return  N = N | (1<<pos);}
 int Reset(int N, int pos) {return  N = N & ~(1<<pos);}
 bool Cheek(int N, int pos) {return  (bool)(N & (1<<pos));}
+#define least_one_pos(x) __builtin_ffs(x)
+#define leading_zeros(x) __builtin_clz(x)
+#define tailing_zeros(x) __builtin_ctz(x)
+#define num_of_one(x) __builtin_popcount(x)
 ///............x...........///
 #define all(a) a.begin(), a.end()
 #define allr(a) a.rbegin(), a.rend()
@@ -75,6 +79,10 @@ int main(){
 			"int Set(int N, int pos) {return  N = N | (1<<pos);}",
 			"int Reset(int N, int pos) {return  N = N & ~(1<<pos);}",
 			"bool Cheek(int N, int pos) {return  (bool)(N & (1<<pos));}",
+            "#define least_one_pos(x) __builtin_ffs(x)",
+			"#define leading_zeros(x) __builtin_clz(x)",
+			"#define tailing_zeros(x) __builtin_ctz(x)",
+			"#define num_of_one(x) __builtin_popcount(x)",
 			"///............x...........///",
 			"#define all(a) a.begin(), a.end()",
 			"#define allr(a) a.rbegin(), a.rend()",
