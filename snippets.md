@@ -1652,6 +1652,136 @@ void sieve(){
 
 
 <details>
+	<summary>Centroid Decomposition</summary>
+	<b>Code</b>
+
+```c++
+class CentroidDecomposition{
+public:
+    vector<vector<int>>adj,lightAdj;
+    vector<bool>removed;
+    vector<int>subtree,parent;
+    int n,root;
+    CentroidDecomposition(int _n){
+        n = _n;
+        root=1;
+        adj.resize(n+1);
+        lightAdj.resize(n+1);
+        removed.resize(n+1);
+        subtree.resize(n+1);
+        parent.resize(n+1);
+    }
+    void readTree(){
+        for(int i=1; i<n; i++){
+            int a,b;
+            cin>>a>>b;
+            adj[a].push_back(b);
+            adj[b].push_back(a);
+        }
+    }
+    int get_subtree_size(int node, int par=-1){
+        subtree[node]=1;
+        for(auto x:adj[node]){
+            if(!removed[x] and par!=x){
+                subtree[node] += get_subtree_size(x,node);
+            }
+        }
+        return subtree[node];
+    }
+    int get_centroid(int node, int desired, int par=-1){
+        for(auto x:adj[node]){
+            if(!removed[x] and x!=par and desired<=subtree[x]){
+                return get_centroid(x,desired,node);
+            }
+        }
+        return node;
+    }
+    void centroid_decomposition(int node, int par=-1){
+        int centroid = get_centroid(node,get_subtree_size(node)>>1);
+        removed[centroid]=true;
+        if(par!=-1){
+            lightAdj[par].push_back(centroid);
+            parent[centroid]=par;
+        }
+        else root=centroid;
+        for(auto x:adj[centroid]){
+            if(!removed[x])
+                centroid_decomposition(x,centroid);
+        }
+    }
+};	
+```
+	
+<b>vs code</b>
+	
+```
+{
+	"Tree":{
+		"prefix":"CentroidDecomposition",
+		"body": [
+			"class CentroidDecomposition{",
+			"public:",
+			"    vector<vector<int>>adj,lightAdj;",
+			"    vector<bool>removed;",
+			"    vector<int>subtree,parent;",
+			"    int n,root;",
+			"    CentroidDecomposition(int _n){",
+			"        n = _n;",
+			"        root=1;",
+			"        adj.resize(n+1);",
+			"        lightAdj.resize(n+1);",
+			"        removed.resize(n+1);",
+			"        subtree.resize(n+1);",
+			"        parent.resize(n+1);",
+			"    }",
+			"    void readTree(){",
+			"        for(int i=1; i<n; i++){",
+			"            int a,b;",
+			"            cin>>a>>b;",
+			"            adj[a].push_back(b);",
+			"            adj[b].push_back(a);",
+			"        }",
+			"    }",
+			"    int get_subtree_size(int node, int par=-1){",
+			"        subtree[node]=1;",
+			"        for(auto x:adj[node]){",
+			"            if(!removed[x] and par!=x){",
+			"                subtree[node] += get_subtree_size(x,node);",
+			"            }",
+			"        }",
+			"        return subtree[node];",
+			"    }",
+			"    int get_centroid(int node, int desired, int par=-1){",
+			"        for(auto x:adj[node]){",
+			"            if(!removed[x] and x!=par and desired<=subtree[x]){",
+			"                return get_centroid(x,desired,node);",
+			"            }",
+			"        }",
+			"        return node;",
+			"    }",
+			"    void centroid_decomposition(int node, int par=-1){",
+			"        int centroid = get_centroid(node,get_subtree_size(node)>>1);",
+			"        removed[centroid]=true;",
+			"        if(par!=-1){",
+			"            lightAdj[par].push_back(centroid);",
+			"            parent[centroid]=par;",
+			"        }",
+			"        else root=centroid;",
+			"        for(auto x:adj[centroid]){",
+			"            if(!removed[x])",
+			"                centroid_decomposition(x,centroid);",
+			"        }",
+			"    }",
+			"};",
+		],
+	}
+}
+```
+	
+</details>
+
+
+<details>
 	<summary>Next one</summary>
 	<b>Code</b>
 
