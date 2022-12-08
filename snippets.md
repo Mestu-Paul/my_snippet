@@ -1782,6 +1782,140 @@ public:
 
 
 <details>
+	<summary>Hld not tested</summary>
+	<b>Code</b>
+
+```c++
+class HLD{
+public:
+	int n,in_time;
+	vector<vector<pair<int,int>>>adj;
+	vector<int>heavy,head,parent,pos,subtree;
+	vector<int>paren_cost,cost2,tree,depth;
+	HLD(int _n){
+		n = _n;
+		in_time=0;
+		adj.resize(n+1);
+		subtree = head = parent = pos = vector<int>(n+1);
+		paren_cost = cost2 = depth = vector<int>(n+1);
+		heavy.assign(n+1,-1);
+	}
+	void readTree(){
+		int a,b,c=1;
+		for(int i=1; i<n; i++){
+			cin>>a>>b>>c;
+			adj[a].push_back({b,c});
+			adj[b].push_back({a,c});
+		}
+	}
+	void dfs(int node){
+		int mx=0,nd=-1,c;
+		subtree[node]=1;
+		for(auto x:adj[node]){
+			if(x.first==parent[node])continue;
+			parent[x.first] = node;
+			paren_cost[x.first] = x.second;
+			depth[x.first] = depth[node]+1;
+			dfs(x.first);
+			subtree[node] += subtree[x.first];
+			if(subtree[x.first] > mx){
+				mx = subtree[x.first];
+				nd = x.first;
+				c = x.second;
+			}
+		}
+		heavy[node] = nd;
+	}
+	void decompose(int node, int h, int c){
+		head[node] = h; pos[node] = ++in_time;
+		cost2[in_time] = c;
+		if(heavy[node]!=-1){
+			decompose(heavy[node],h, paren_cost[heavy[node]]);
+		}
+		for(auto x:adj[node]){
+			if(x.first!=heavy[node] and x.first!=parent[node]){
+				decompose(x.first,x.first,0);
+			}
+		}
+	}
+	void build(int node, int b, int e){
+		if(b>e)return;
+		if(b==e){
+			tree[node]=cost2[b];
+			return;
+		}
+		int m = (b+e)/2;
+		build(node*2,b,m);
+		build(node*2+1,m+1,e);
+		tree[node] = max(tree[node*2],tree[node*2+1]);
+	}
+	int query(int node, int b, int e, int l, int r){
+		if(b>e or e<l or r<b)return 0;
+		if(l<=b and e<=r){
+			return tree[node];
+		}
+		int m = (b+e)/2;
+		int p1 = query(node*2,b,m,l,r);
+		int p2 = query(node*2+1,m+1,e,l,r);
+		return max(p1,p2);
+	}
+	void update(int node, int b, int e, int l, int r){
+		if(b>e)return;
+		if(b==e){
+			tree[node]=cost2[b];
+			return;
+		}
+		int m = (b+e)/2;
+		update(node*2,b,m,l,r);
+		update(node*2+1,m+1,e,l,r);
+		tree[node] = max(tree[node*2],tree[node*2+1]);
+	}
+	int query(int a, int b){
+		int res = 0;
+		for( ; head[a] != head[b]; b = paren_cost[head[b]]){
+			if(depth[head[a]] > depth[head[b]])
+				swap(a,b);
+			int cur_heavy_max = query(1,1,in_time,pos[head[b]],pos[b]);
+			res = max(res,cur_heavy_max);
+		}
+		if(depth[a] > depth[b])
+			swap(a,b);
+		res = max(res,query(1,1,in_time,pos[a],pos[b]));
+		return res;
+	}
+	void controller(){
+		readTree();
+		dfs(1);
+		int cent = 1;//get_centroid(1,n/2);
+		decompose(cent,cent,0);
+		tree.resize(4*in_time);
+		build(1,1,in_time);
+		string s;
+		while(cin>>s){
+			if(s=="DONE")break;
+			int a,b;cin>>a>>b;
+			if(s=="QUERY"){
+				cout<<query(a,b)<<endl;
+			}
+			else{
+				cost2[pos[a]]=b;
+				update(1,1,in_time,pos[a],pos[a]);
+			}
+		}
+	}
+};
+```
+	
+<b>vs code</b>
+	
+```
+
+```
+	
+</details>
+
+
+<details>
 	<summary>Next one</summary>
 	<b>Code</b>
 
